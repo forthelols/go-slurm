@@ -1,0 +1,30 @@
+GENERATOR: 
+  PackageName: slurm
+  PackageDescription: "Package slurm provides Go bindings for Slurm resource manager"
+  PkgConfigOpts: [slurm]
+  Includes:
+    - slurm/slurm.h
+
+PARSER:
+  SourcesPaths:
+    - slurm/slurm.h
+
+TRANSLATOR:
+  ConstRules:
+    defines: eval
+  Rules:
+    global:
+      - {action: accept, from: "^slurm_"}
+    function:
+      # Functions with variadic args need some extra
+      # care, just skip them for now:
+      - {action: ignore, from: "^slurm_step_ctx_get$"}
+      # Linking issues, to be investigated:
+      - {action: ignore, from: "^slurm_burst_buffer_state_string$"}
+      - {action: ignore, from: "^slurm_step_launch_fwd_wake$"}
+    type:
+      - {action: accept, from: "_t$"}
+      - {action: accept, from: "^FILE$"}
+      - {action: accept, from: "^List"}
+    private:
+      - {transform: unexport}
