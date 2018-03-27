@@ -2,7 +2,7 @@ GENERATOR:
   PackageName: slurm
   PackageDescription: "Package slurm provides Go bindings for Slurm resource manager"
   PkgConfigOpts: [slurm]
-  Includes:
+  SysIncludes:
     - slurm/slurm.h
 
 PARSER:
