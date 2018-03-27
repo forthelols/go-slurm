@@ -1,4 +1,4 @@
-// WARNING: This file has automatically been generated on Wed, 28 Mar 2018 00:50:28 CEST.
+// WARNING: This file has automatically been generated on Wed, 28 Mar 2018 01:12:32 CEST.
 // By https://git.io/c-for-go. DO NOT EDIT.
 
 package slurm
@@ -6193,6 +6193,32 @@ func (x *slurm_step_launch_params_t) Deref() {
 	x.spank_job_env_size = (uint32_t)(x.ref17ff30d9.spank_job_env_size)
 }
 
+// Ref returns a reference to C object as it is.
+func (x *slurm_step_launch_callbacks_t) Ref() *C.slurm_step_launch_callbacks_t {
+	if x == nil {
+		return nil
+	}
+	return (*C.slurm_step_launch_callbacks_t)(unsafe.Pointer(x))
+}
+
+// Free cleanups the referenced memory using C free.
+func (x *slurm_step_launch_callbacks_t) Free() {
+	if x != nil {
+		C.free(unsafe.Pointer(x))
+	}
+}
+
+// Newslurm_step_launch_callbacks_tRef converts the C object reference into a raw struct reference without wrapping.
+func Newslurm_step_launch_callbacks_tRef(ref unsafe.Pointer) *slurm_step_launch_callbacks_t {
+	return (*slurm_step_launch_callbacks_t)(ref)
+}
+
+// Newslurm_step_launch_callbacks_t allocates a new C object of this type and converts the reference into
+// a raw struct reference without wrapping.
+func Newslurm_step_launch_callbacks_t() *slurm_step_launch_callbacks_t {
+	return (*slurm_step_launch_callbacks_t)(allocSlurm_step_launch_callbacks_tMemory(1))
+}
+
 // allocSlurm_step_launch_callbacks_tMemory allocates memory for type C.slurm_step_launch_callbacks_t in C.
 // The caller is responsible for freeing the this memory via C.free.
 func allocSlurm_step_launch_callbacks_tMemory(n int) unsafe.Pointer {
@@ -6205,93 +6231,38 @@ func allocSlurm_step_launch_callbacks_tMemory(n int) unsafe.Pointer {
 
 const sizeOfSlurm_step_launch_callbacks_tValue = unsafe.Sizeof([1]C.slurm_step_launch_callbacks_t{})
 
-// Ref returns the underlying reference to C object or nil if struct is nil.
-func (x *slurm_step_launch_callbacks_t) Ref() *C.slurm_step_launch_callbacks_t {
+// PassRef returns a reference to C object as it is or allocates a new C object of this type.
+func (x *slurm_step_launch_callbacks_t) PassRef() *C.slurm_step_launch_callbacks_t {
+	if x == nil {
+		x = (*slurm_step_launch_callbacks_t)(allocSlurm_step_launch_callbacks_tMemory(1))
+	}
+	return (*C.slurm_step_launch_callbacks_t)(unsafe.Pointer(x))
+}
+
+// Ref returns a reference to C object as it is.
+func (x *slurm_allocation_callbacks_t) Ref() *C.slurm_allocation_callbacks_t {
 	if x == nil {
 		return nil
 	}
-	return x.refaf4fc3bc
+	return (*C.slurm_allocation_callbacks_t)(unsafe.Pointer(x))
 }
 
-// Free invokes alloc map's free mechanism that cleanups any allocated memory using C free.
-// Does nothing if struct is nil or has no allocation map.
-func (x *slurm_step_launch_callbacks_t) Free() {
-	if x != nil && x.allocsaf4fc3bc != nil {
-		x.allocsaf4fc3bc.(*cgoAllocMap).Free()
-		x.refaf4fc3bc = nil
+// Free cleanups the referenced memory using C free.
+func (x *slurm_allocation_callbacks_t) Free() {
+	if x != nil {
+		C.free(unsafe.Pointer(x))
 	}
 }
 
-// Newslurm_step_launch_callbacks_tRef creates a new wrapper struct with underlying reference set to the original C object.
-// Returns nil if the provided pointer to C object is nil too.
-func Newslurm_step_launch_callbacks_tRef(ref unsafe.Pointer) *slurm_step_launch_callbacks_t {
-	if ref == nil {
-		return nil
-	}
-	obj := new(slurm_step_launch_callbacks_t)
-	obj.refaf4fc3bc = (*C.slurm_step_launch_callbacks_t)(unsafe.Pointer(ref))
-	return obj
+// Newslurm_allocation_callbacks_tRef converts the C object reference into a raw struct reference without wrapping.
+func Newslurm_allocation_callbacks_tRef(ref unsafe.Pointer) *slurm_allocation_callbacks_t {
+	return (*slurm_allocation_callbacks_t)(ref)
 }
 
-// PassRef returns the underlying C object, otherwise it will allocate one and set its values
-// from this wrapping struct, counting allocations into an allocation map.
-func (x *slurm_step_launch_callbacks_t) PassRef() (*C.slurm_step_launch_callbacks_t, *cgoAllocMap) {
-	if x == nil {
-		return nil, nil
-	} else if x.refaf4fc3bc != nil {
-		return x.refaf4fc3bc, nil
-	}
-	memaf4fc3bc := allocSlurm_step_launch_callbacks_tMemory(1)
-	refaf4fc3bc := (*C.slurm_step_launch_callbacks_t)(memaf4fc3bc)
-	allocsaf4fc3bc := new(cgoAllocMap)
-	allocsaf4fc3bc.Add(memaf4fc3bc)
-
-	var cstep_complete_allocs *cgoAllocMap
-	refaf4fc3bc.step_complete, cstep_complete_allocs = x.step_complete.PassRef()
-	allocsaf4fc3bc.Borrow(cstep_complete_allocs)
-
-	var cstep_signal_allocs *cgoAllocMap
-	refaf4fc3bc.step_signal, cstep_signal_allocs = x.step_signal.PassRef()
-	allocsaf4fc3bc.Borrow(cstep_signal_allocs)
-
-	var cstep_timeout_allocs *cgoAllocMap
-	refaf4fc3bc.step_timeout, cstep_timeout_allocs = x.step_timeout.PassRef()
-	allocsaf4fc3bc.Borrow(cstep_timeout_allocs)
-
-	var ctask_start_allocs *cgoAllocMap
-	refaf4fc3bc.task_start, ctask_start_allocs = x.task_start.PassRef()
-	allocsaf4fc3bc.Borrow(ctask_start_allocs)
-
-	var ctask_finish_allocs *cgoAllocMap
-	refaf4fc3bc.task_finish, ctask_finish_allocs = x.task_finish.PassRef()
-	allocsaf4fc3bc.Borrow(ctask_finish_allocs)
-
-	x.refaf4fc3bc = refaf4fc3bc
-	x.allocsaf4fc3bc = allocsaf4fc3bc
-	return refaf4fc3bc, allocsaf4fc3bc
-
-}
-
-// PassValue does the same as PassRef except that it will try to dereference the returned pointer.
-func (x slurm_step_launch_callbacks_t) PassValue() (C.slurm_step_launch_callbacks_t, *cgoAllocMap) {
-	if x.refaf4fc3bc != nil {
-		return *x.refaf4fc3bc, nil
-	}
-	ref, allocs := x.PassRef()
-	return *ref, allocs
-}
-
-// Deref uses the underlying reference to C object and fills the wrapping struct with values.
-// Do not forget to call this method whether you get a struct for C object and want to read its values.
-func (x *slurm_step_launch_callbacks_t) Deref() {
-	if x.refaf4fc3bc == nil {
-		return
-	}
-	x.step_complete = NewRef(unsafe.Pointer(x.refaf4fc3bc.step_complete))
-	x.step_signal = NewRef(unsafe.Pointer(x.refaf4fc3bc.step_signal))
-	x.step_timeout = NewRef(unsafe.Pointer(x.refaf4fc3bc.step_timeout))
-	x.task_start = NewRef(unsafe.Pointer(x.refaf4fc3bc.task_start))
-	x.task_finish = NewRef(unsafe.Pointer(x.refaf4fc3bc.task_finish))
+// Newslurm_allocation_callbacks_t allocates a new C object of this type and converts the reference into
+// a raw struct reference without wrapping.
+func Newslurm_allocation_callbacks_t() *slurm_allocation_callbacks_t {
+	return (*slurm_allocation_callbacks_t)(allocSlurm_allocation_callbacks_tMemory(1))
 }
 
 // allocSlurm_allocation_callbacks_tMemory allocates memory for type C.slurm_allocation_callbacks_t in C.
@@ -6306,98 +6277,38 @@ func allocSlurm_allocation_callbacks_tMemory(n int) unsafe.Pointer {
 
 const sizeOfSlurm_allocation_callbacks_tValue = unsafe.Sizeof([1]C.slurm_allocation_callbacks_t{})
 
-// Ref returns the underlying reference to C object or nil if struct is nil.
-func (x *slurm_allocation_callbacks_t) Ref() *C.slurm_allocation_callbacks_t {
+// PassRef returns a reference to C object as it is or allocates a new C object of this type.
+func (x *slurm_allocation_callbacks_t) PassRef() *C.slurm_allocation_callbacks_t {
+	if x == nil {
+		x = (*slurm_allocation_callbacks_t)(allocSlurm_allocation_callbacks_tMemory(1))
+	}
+	return (*C.slurm_allocation_callbacks_t)(unsafe.Pointer(x))
+}
+
+// Ref returns a reference to C object as it is.
+func (x *slurm_trigger_callbacks_t) Ref() *C.slurm_trigger_callbacks_t {
 	if x == nil {
 		return nil
 	}
-	return x.ref681611eb
+	return (*C.slurm_trigger_callbacks_t)(unsafe.Pointer(x))
 }
 
-// Free invokes alloc map's free mechanism that cleanups any allocated memory using C free.
-// Does nothing if struct is nil or has no allocation map.
-func (x *slurm_allocation_callbacks_t) Free() {
-	if x != nil && x.allocs681611eb != nil {
-		x.allocs681611eb.(*cgoAllocMap).Free()
-		x.ref681611eb = nil
+// Free cleanups the referenced memory using C free.
+func (x *slurm_trigger_callbacks_t) Free() {
+	if x != nil {
+		C.free(unsafe.Pointer(x))
 	}
 }
 
-// Newslurm_allocation_callbacks_tRef creates a new wrapper struct with underlying reference set to the original C object.
-// Returns nil if the provided pointer to C object is nil too.
-func Newslurm_allocation_callbacks_tRef(ref unsafe.Pointer) *slurm_allocation_callbacks_t {
-	if ref == nil {
-		return nil
-	}
-	obj := new(slurm_allocation_callbacks_t)
-	obj.ref681611eb = (*C.slurm_allocation_callbacks_t)(unsafe.Pointer(ref))
-	return obj
+// Newslurm_trigger_callbacks_tRef converts the C object reference into a raw struct reference without wrapping.
+func Newslurm_trigger_callbacks_tRef(ref unsafe.Pointer) *slurm_trigger_callbacks_t {
+	return (*slurm_trigger_callbacks_t)(ref)
 }
 
-// PassRef returns the underlying C object, otherwise it will allocate one and set its values
-// from this wrapping struct, counting allocations into an allocation map.
-func (x *slurm_allocation_callbacks_t) PassRef() (*C.slurm_allocation_callbacks_t, *cgoAllocMap) {
-	if x == nil {
-		return nil, nil
-	} else if x.ref681611eb != nil {
-		return x.ref681611eb, nil
-	}
-	mem681611eb := allocSlurm_allocation_callbacks_tMemory(1)
-	ref681611eb := (*C.slurm_allocation_callbacks_t)(mem681611eb)
-	allocs681611eb := new(cgoAllocMap)
-	allocs681611eb.Add(mem681611eb)
-
-	var cping_allocs *cgoAllocMap
-	ref681611eb.ping, cping_allocs = x.ping.PassRef()
-	allocs681611eb.Borrow(cping_allocs)
-
-	var cjob_complete_allocs *cgoAllocMap
-	ref681611eb.job_complete, cjob_complete_allocs = x.job_complete.PassRef()
-	allocs681611eb.Borrow(cjob_complete_allocs)
-
-	var ctimeout_allocs *cgoAllocMap
-	ref681611eb.timeout, ctimeout_allocs = x.timeout.PassRef()
-	allocs681611eb.Borrow(ctimeout_allocs)
-
-	var cuser_msg_allocs *cgoAllocMap
-	ref681611eb.user_msg, cuser_msg_allocs = x.user_msg.PassRef()
-	allocs681611eb.Borrow(cuser_msg_allocs)
-
-	var cnode_fail_allocs *cgoAllocMap
-	ref681611eb.node_fail, cnode_fail_allocs = x.node_fail.PassRef()
-	allocs681611eb.Borrow(cnode_fail_allocs)
-
-	var cjob_suspend_allocs *cgoAllocMap
-	ref681611eb.job_suspend, cjob_suspend_allocs = x.job_suspend.PassRef()
-	allocs681611eb.Borrow(cjob_suspend_allocs)
-
-	x.ref681611eb = ref681611eb
-	x.allocs681611eb = allocs681611eb
-	return ref681611eb, allocs681611eb
-
-}
-
-// PassValue does the same as PassRef except that it will try to dereference the returned pointer.
-func (x slurm_allocation_callbacks_t) PassValue() (C.slurm_allocation_callbacks_t, *cgoAllocMap) {
-	if x.ref681611eb != nil {
-		return *x.ref681611eb, nil
-	}
-	ref, allocs := x.PassRef()
-	return *ref, allocs
-}
-
-// Deref uses the underlying reference to C object and fills the wrapping struct with values.
-// Do not forget to call this method whether you get a struct for C object and want to read its values.
-func (x *slurm_allocation_callbacks_t) Deref() {
-	if x.ref681611eb == nil {
-		return
-	}
-	x.ping = NewRef(unsafe.Pointer(x.ref681611eb.ping))
-	x.job_complete = NewRef(unsafe.Pointer(x.ref681611eb.job_complete))
-	x.timeout = NewRef(unsafe.Pointer(x.ref681611eb.timeout))
-	x.user_msg = NewRef(unsafe.Pointer(x.ref681611eb.user_msg))
-	x.node_fail = NewRef(unsafe.Pointer(x.ref681611eb.node_fail))
-	x.job_suspend = NewRef(unsafe.Pointer(x.ref681611eb.job_suspend))
+// Newslurm_trigger_callbacks_t allocates a new C object of this type and converts the reference into
+// a raw struct reference without wrapping.
+func Newslurm_trigger_callbacks_t() *slurm_trigger_callbacks_t {
+	return (*slurm_trigger_callbacks_t)(allocSlurm_trigger_callbacks_tMemory(1))
 }
 
 // allocSlurm_trigger_callbacks_tMemory allocates memory for type C.slurm_trigger_callbacks_t in C.
@@ -6412,93 +6323,12 @@ func allocSlurm_trigger_callbacks_tMemory(n int) unsafe.Pointer {
 
 const sizeOfSlurm_trigger_callbacks_tValue = unsafe.Sizeof([1]C.slurm_trigger_callbacks_t{})
 
-// Ref returns the underlying reference to C object or nil if struct is nil.
-func (x *slurm_trigger_callbacks_t) Ref() *C.slurm_trigger_callbacks_t {
+// PassRef returns a reference to C object as it is or allocates a new C object of this type.
+func (x *slurm_trigger_callbacks_t) PassRef() *C.slurm_trigger_callbacks_t {
 	if x == nil {
-		return nil
+		x = (*slurm_trigger_callbacks_t)(allocSlurm_trigger_callbacks_tMemory(1))
 	}
-	return x.ref3554fae
-}
-
-// Free invokes alloc map's free mechanism that cleanups any allocated memory using C free.
-// Does nothing if struct is nil or has no allocation map.
-func (x *slurm_trigger_callbacks_t) Free() {
-	if x != nil && x.allocs3554fae != nil {
-		x.allocs3554fae.(*cgoAllocMap).Free()
-		x.ref3554fae = nil
-	}
-}
-
-// Newslurm_trigger_callbacks_tRef creates a new wrapper struct with underlying reference set to the original C object.
-// Returns nil if the provided pointer to C object is nil too.
-func Newslurm_trigger_callbacks_tRef(ref unsafe.Pointer) *slurm_trigger_callbacks_t {
-	if ref == nil {
-		return nil
-	}
-	obj := new(slurm_trigger_callbacks_t)
-	obj.ref3554fae = (*C.slurm_trigger_callbacks_t)(unsafe.Pointer(ref))
-	return obj
-}
-
-// PassRef returns the underlying C object, otherwise it will allocate one and set its values
-// from this wrapping struct, counting allocations into an allocation map.
-func (x *slurm_trigger_callbacks_t) PassRef() (*C.slurm_trigger_callbacks_t, *cgoAllocMap) {
-	if x == nil {
-		return nil, nil
-	} else if x.ref3554fae != nil {
-		return x.ref3554fae, nil
-	}
-	mem3554fae := allocSlurm_trigger_callbacks_tMemory(1)
-	ref3554fae := (*C.slurm_trigger_callbacks_t)(mem3554fae)
-	allocs3554fae := new(cgoAllocMap)
-	allocs3554fae.Add(mem3554fae)
-
-	var cacct_full_allocs *cgoAllocMap
-	ref3554fae.acct_full, cacct_full_allocs = x.acct_full.PassRef()
-	allocs3554fae.Borrow(cacct_full_allocs)
-
-	var cdbd_fail_allocs *cgoAllocMap
-	ref3554fae.dbd_fail, cdbd_fail_allocs = x.dbd_fail.PassRef()
-	allocs3554fae.Borrow(cdbd_fail_allocs)
-
-	var cdbd_resumed_allocs *cgoAllocMap
-	ref3554fae.dbd_resumed, cdbd_resumed_allocs = x.dbd_resumed.PassRef()
-	allocs3554fae.Borrow(cdbd_resumed_allocs)
-
-	var cdb_fail_allocs *cgoAllocMap
-	ref3554fae.db_fail, cdb_fail_allocs = x.db_fail.PassRef()
-	allocs3554fae.Borrow(cdb_fail_allocs)
-
-	var cdb_resumed_allocs *cgoAllocMap
-	ref3554fae.db_resumed, cdb_resumed_allocs = x.db_resumed.PassRef()
-	allocs3554fae.Borrow(cdb_resumed_allocs)
-
-	x.ref3554fae = ref3554fae
-	x.allocs3554fae = allocs3554fae
-	return ref3554fae, allocs3554fae
-
-}
-
-// PassValue does the same as PassRef except that it will try to dereference the returned pointer.
-func (x slurm_trigger_callbacks_t) PassValue() (C.slurm_trigger_callbacks_t, *cgoAllocMap) {
-	if x.ref3554fae != nil {
-		return *x.ref3554fae, nil
-	}
-	ref, allocs := x.PassRef()
-	return *ref, allocs
-}
-
-// Deref uses the underlying reference to C object and fills the wrapping struct with values.
-// Do not forget to call this method whether you get a struct for C object and want to read its values.
-func (x *slurm_trigger_callbacks_t) Deref() {
-	if x.ref3554fae == nil {
-		return
-	}
-	x.acct_full = NewRef(unsafe.Pointer(x.ref3554fae.acct_full))
-	x.dbd_fail = NewRef(unsafe.Pointer(x.ref3554fae.dbd_fail))
-	x.dbd_resumed = NewRef(unsafe.Pointer(x.ref3554fae.dbd_resumed))
-	x.db_fail = NewRef(unsafe.Pointer(x.ref3554fae.db_fail))
-	x.db_resumed = NewRef(unsafe.Pointer(x.ref3554fae.db_resumed))
+	return (*C.slurm_trigger_callbacks_t)(unsafe.Pointer(x))
 }
 
 // allocJob_step_info_tMemory allocates memory for type C.job_step_info_t in C.
@@ -17949,44 +17779,6 @@ func packSResource_allocation_response_msg_t(v []resource_allocation_response_ms
 	}
 }
 
-// unpackArgSSlurm_allocation_callbacks_t transforms a sliced Go data structure into plain C format.
-func unpackArgSSlurm_allocation_callbacks_t(x []slurm_allocation_callbacks_t) (unpacked *C.slurm_allocation_callbacks_t, allocs *cgoAllocMap) {
-	if x == nil {
-		return nil, nil
-	}
-	allocs = new(cgoAllocMap)
-	defer runtime.SetFinalizer(&unpacked, func(**C.slurm_allocation_callbacks_t) {
-		go allocs.Free()
-	})
-
-	len0 := len(x)
-	mem0 := allocSlurm_allocation_callbacks_tMemory(len0)
-	allocs.Add(mem0)
-	h0 := &sliceHeader{
-		Data: uintptr(mem0),
-		Cap:  len0,
-		Len:  len0,
-	}
-	v0 := *(*[]C.slurm_allocation_callbacks_t)(unsafe.Pointer(h0))
-	for i0 := range x {
-		allocs0 := new(cgoAllocMap)
-		v0[i0], allocs0 = x[i0].PassValue()
-		allocs.Borrow(allocs0)
-	}
-	h := (*sliceHeader)(unsafe.Pointer(&v0))
-	unpacked = (*C.slurm_allocation_callbacks_t)(unsafe.Pointer(h.Data))
-	return
-}
-
-// packSSlurm_allocation_callbacks_t reads sliced Go data structure out from plain C format.
-func packSSlurm_allocation_callbacks_t(v []slurm_allocation_callbacks_t, ptr0 *C.slurm_allocation_callbacks_t) {
-	const m = 0x7fffffff
-	for i0 := range v {
-		ptr1 := (*(*[m / sizeOfSlurm_allocation_callbacks_tValue]C.slurm_allocation_callbacks_t)(unsafe.Pointer(ptr0)))[i0]
-		v[i0] = *Newslurm_allocation_callbacks_tRef(unsafe.Pointer(&ptr1))
-	}
-}
-
 // allocPSubmit_response_msg_tMemory allocates memory for type *C.submit_response_msg_t in C.
 // The caller is responsible for freeing the this memory via C.free.
 func allocPSubmit_response_msg_tMemory(n int) unsafe.Pointer {
@@ -18647,44 +18439,6 @@ func packSSlurm_step_launch_params_t(v []slurm_step_launch_params_t, ptr0 *C.slu
 	for i0 := range v {
 		ptr1 := (*(*[m / sizeOfSlurm_step_launch_params_tValue]C.slurm_step_launch_params_t)(unsafe.Pointer(ptr0)))[i0]
 		v[i0] = *Newslurm_step_launch_params_tRef(unsafe.Pointer(&ptr1))
-	}
-}
-
-// unpackArgSSlurm_step_launch_callbacks_t transforms a sliced Go data structure into plain C format.
-func unpackArgSSlurm_step_launch_callbacks_t(x []slurm_step_launch_callbacks_t) (unpacked *C.slurm_step_launch_callbacks_t, allocs *cgoAllocMap) {
-	if x == nil {
-		return nil, nil
-	}
-	allocs = new(cgoAllocMap)
-	defer runtime.SetFinalizer(&unpacked, func(**C.slurm_step_launch_callbacks_t) {
-		go allocs.Free()
-	})
-
-	len0 := len(x)
-	mem0 := allocSlurm_step_launch_callbacks_tMemory(len0)
-	allocs.Add(mem0)
-	h0 := &sliceHeader{
-		Data: uintptr(mem0),
-		Cap:  len0,
-		Len:  len0,
-	}
-	v0 := *(*[]C.slurm_step_launch_callbacks_t)(unsafe.Pointer(h0))
-	for i0 := range x {
-		allocs0 := new(cgoAllocMap)
-		v0[i0], allocs0 = x[i0].PassValue()
-		allocs.Borrow(allocs0)
-	}
-	h := (*sliceHeader)(unsafe.Pointer(&v0))
-	unpacked = (*C.slurm_step_launch_callbacks_t)(unsafe.Pointer(h.Data))
-	return
-}
-
-// packSSlurm_step_launch_callbacks_t reads sliced Go data structure out from plain C format.
-func packSSlurm_step_launch_callbacks_t(v []slurm_step_launch_callbacks_t, ptr0 *C.slurm_step_launch_callbacks_t) {
-	const m = 0x7fffffff
-	for i0 := range v {
-		ptr1 := (*(*[m / sizeOfSlurm_step_launch_callbacks_tValue]C.slurm_step_launch_callbacks_t)(unsafe.Pointer(ptr0)))[i0]
-		v[i0] = *Newslurm_step_launch_callbacks_tRef(unsafe.Pointer(&ptr1))
 	}
 }
 

@@ -1,4 +1,4 @@
-// WARNING: This file has automatically been generated on Wed, 28 Mar 2018 00:50:28 CEST.
+// WARNING: This file has automatically been generated on Wed, 28 Mar 2018 01:12:32 CEST.
 // By https://git.io/c-for-go. DO NOT EDIT.
 
 package slurm
@@ -760,38 +760,13 @@ type slurm_step_launch_params_t struct {
 }
 
 // slurm_step_launch_callbacks_t as declared in slurm/slurm.h:2036
-type slurm_step_launch_callbacks_t struct {
-	step_complete  *func(arg0 []srun_job_complete_msg_t)
-	step_signal    *func(arg0 int32)
-	step_timeout   *func(arg0 []srun_timeout_msg_t)
-	task_start     *func(arg0 []launch_tasks_response_msg_t)
-	task_finish    *func(arg0 []task_exit_msg_t)
-	refaf4fc3bc    *C.slurm_step_launch_callbacks_t
-	allocsaf4fc3bc interface{}
-}
+type slurm_step_launch_callbacks_t C.slurm_step_launch_callbacks_t
 
 // slurm_allocation_callbacks_t as declared in slurm/slurm.h:2045
-type slurm_allocation_callbacks_t struct {
-	ping           *func(arg0 []srun_ping_msg_t)
-	job_complete   *func(arg0 []srun_job_complete_msg_t)
-	timeout        *func(arg0 []srun_timeout_msg_t)
-	user_msg       *func(arg0 []srun_user_msg_t)
-	node_fail      *func(arg0 []srun_node_fail_msg_t)
-	job_suspend    *func(arg0 []suspend_msg_t)
-	ref681611eb    *C.slurm_allocation_callbacks_t
-	allocs681611eb interface{}
-}
+type slurm_allocation_callbacks_t C.slurm_allocation_callbacks_t
 
 // slurm_trigger_callbacks_t as declared in slurm/slurm.h:2053
-type slurm_trigger_callbacks_t struct {
-	acct_full     *func()
-	dbd_fail      *func()
-	dbd_resumed   *func()
-	db_fail       *func()
-	db_resumed    *func()
-	ref3554fae    *C.slurm_trigger_callbacks_t
-	allocs3554fae interface{}
-}
+type slurm_trigger_callbacks_t C.slurm_trigger_callbacks_t
 
 // job_step_info_t as declared in slurm/slurm.h:2093
 type job_step_info_t struct {

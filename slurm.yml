@@ -11,7 +11,8 @@ PARSER:
 
 TRANSLATOR:
   ConstRules:
-    defines: eval
+    defines: cgo
+    enum: cgo
   Rules:
     global:
       - {action: accept, from: "^slurm_"}
@@ -28,3 +29,11 @@ TRANSLATOR:
       - {action: accept, from: "^List"}
     private:
       - {transform: unexport}
+  MemTips:
+      # Structs containing function pointer fields are causing
+      # some issues, just handle them as pointers to opaque types
+      # at least for now (needs to be investigated):
+      - {target: slurm_step_launch_callbacks_t, self: raw}
+      - {target: slurm_allocation_callbacks_t, self: raw}
+      - {target: slurm_trigger_callbacks_t, self: raw}
+

@@ -1,4 +1,4 @@
-// WARNING: This file has automatically been generated on Wed, 28 Mar 2018 00:50:28 CEST.
+// WARNING: This file has automatically been generated on Wed, 28 Mar 2018 01:12:32 CEST.
 // By https://git.io/c-for-go. DO NOT EDIT.
 
 package slurm
@@ -334,9 +334,8 @@ func slurm_read_hostfile(filename []byte, n int32) *byte {
 // slurm_allocation_msg_thr_create function as declared in slurm/slurm.h:3325
 func slurm_allocation_msg_thr_create(port []uint16_t, callbacks []slurm_allocation_callbacks_t) *allocation_msg_thread_t {
 	cport, _ := (*C.uint16_t)(unsafe.Pointer((*sliceHeader)(unsafe.Pointer(&port)).Data)), cgoAllocsUnknown
-	ccallbacks, _ := unpackArgSSlurm_allocation_callbacks_t(callbacks)
+	ccallbacks, _ := (*C.slurm_allocation_callbacks_t)(unsafe.Pointer((*sliceHeader)(unsafe.Pointer(&callbacks)).Data)), cgoAllocsUnknown
 	__ret := C.slurm_allocation_msg_thr_create(cport, ccallbacks)
-	packSSlurm_allocation_callbacks_t(callbacks, ccallbacks)
 	__v := *(**allocation_msg_thread_t)(unsafe.Pointer(&__ret))
 	return __v
 }
@@ -644,10 +643,9 @@ func slurm_step_launch_params_t_init(ptr []slurm_step_launch_params_t) {
 func slurm_step_launch(ctx []slurm_step_ctx_t, params []slurm_step_launch_params_t, callbacks []slurm_step_launch_callbacks_t, pack_job_cnt int32) int32 {
 	cctx, _ := (*C.slurm_step_ctx_t)(unsafe.Pointer((*sliceHeader)(unsafe.Pointer(&ctx)).Data)), cgoAllocsUnknown
 	cparams, _ := unpackArgSSlurm_step_launch_params_t(params)
-	ccallbacks, _ := unpackArgSSlurm_step_launch_callbacks_t(callbacks)
+	ccallbacks, _ := (*C.slurm_step_launch_callbacks_t)(unsafe.Pointer((*sliceHeader)(unsafe.Pointer(&callbacks)).Data)), cgoAllocsUnknown
 	cpack_job_cnt, _ := (C.int)(pack_job_cnt), cgoAllocsUnknown
 	__ret := C.slurm_step_launch(cctx, cparams, ccallbacks, cpack_job_cnt)
-	packSSlurm_step_launch_callbacks_t(callbacks, ccallbacks)
 	packSSlurm_step_launch_params_t(params, cparams)
 	__v := (int32)(__ret)
 	return __v
