@@ -19,15 +19,26 @@ TRANSLATOR:
       - {action: accept, from: "^slurm_get_errno$"}
       # Beautify
       - {action: replace, from: "^slurm_"}
+      - {load: snakecase}
     type:
       - {action: accept, from: "^job_desc_msg_t$"}
       - {action: accept, from: "^submit_response_msg_t$"}
+      # Beautify
       - {action: replace, from: "_t$"}
+      - {load: snakecase}
+    const:
+      - {action: accept, from: "^SLURM_"}
+      # Error handling in slurm_errno.h
+      - {action: accept, from: "^ESLURM_"}
+      - {action: accept, from: "^ESLURMD_"}
+      - {action: accept, from: "^ESCRIPT_"}
+      # Ignore initializer macros, usually not needed
+      # by clients and troublesome for cgo generation
+      - {action: ignore, from: "_INITIALIZER$"}
     private:
       - {transform: unexport}
     post-global: 
       - {transform: export}
-      - {load: snakecase}
   PtrTips:
     function:
       - {target: "^slurm_submit_batch_job$", tips: [ref,sref]}
