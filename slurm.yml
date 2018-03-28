@@ -8,11 +8,16 @@ GENERATOR:
 PARSER:
   SourcesPaths:
     - slurm/slurm.h
+    - slurm/slurm_errno.h
 
 TRANSLATOR:
   Rules:
     function:
       - {action: accept, from: "^slurm_submit_batch_job$"}
+      # Error handling in slurm_errno.h
+      - {action: accept, from: "^slurm_strerror$"}
+      - {action: accept, from: "^slurm_get_errno$"}
+      # Beautify
       - {action: replace, from: "^slurm_"}
     type:
       - {action: accept, from: "^job_desc_msg_t$"}
