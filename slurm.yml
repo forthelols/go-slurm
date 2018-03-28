@@ -10,30 +10,23 @@ PARSER:
     - slurm/slurm.h
 
 TRANSLATOR:
-  ConstRules:
-    defines: cgo
-    enum: cgo
   Rules:
-    global:
-      - {action: accept, from: "^slurm_"}
     function:
-      # Functions with variadic args need some extra
-      # care, just skip them for now:
-      - {action: ignore, from: "^slurm_step_ctx_get$"}
-      # Linking issues, to be investigated:
-      - {action: ignore, from: "^slurm_burst_buffer_state_string$"}
-      - {action: ignore, from: "^slurm_step_launch_fwd_wake$"}
+      - {action: accept, from: "^slurm_submit_batch_job$"}
+      - {action: replace, from: "^slurm_"}
     type:
-      - {action: accept, from: "_t$"}
-      - {action: accept, from: "^FILE$"}
-      - {action: accept, from: "^List"}
+      - {action: accept, from: "^job_desc_msg_t$"}
+      - {action: accept, from: "^submit_response_msg_t$"}
+      - {action: replace, from: "_t$"}
     private:
       - {transform: unexport}
+    post-global: 
+      - {transform: export}
+      - {load: snakecase}
+  PtrTips:
+    function:
+      - {target: "^slurm_submit_batch_job$", tips: [ref,sref]}
   MemTips:
-      # Structs containing function pointer fields are causing
-      # some issues, just handle them as pointers to opaque types
-      # at least for now (needs to be investigated):
-      - {target: slurm_step_launch_callbacks_t, self: raw}
-      - {target: slurm_allocation_callbacks_t, self: raw}
-      - {target: slurm_trigger_callbacks_t, self: raw}
+      - {target: "^submit_response_msg_t$", self: raw}
+
 
