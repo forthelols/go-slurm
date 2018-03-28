@@ -1,4 +1,4 @@
-// WARNING: This file has automatically been generated on Wed, 28 Mar 2018 14:52:57 CEST.
+// WARNING: This file has automatically been generated on Wed, 28 Mar 2018 14:55:54 CEST.
 // By https://git.io/c-for-go. DO NOT EDIT.
 
 package slurm
@@ -19,6 +19,12 @@ func SubmitBatchJob(jobDescMsg *JobDescMsg, slurmAllocMsg **SubmitResponseMsg) i
 	__ret := C.slurm_submit_batch_job(cjobDescMsg, cslurmAllocMsg)
 	__v := (int32)(__ret)
 	return __v
+}
+
+// FreeSubmitResponseResponseMsg function as declared in slurm/slurm.h:3364
+func FreeSubmitResponseResponseMsg(msg *SubmitResponseMsg) {
+	cmsg, _ := (*C.submit_response_msg_t)(unsafe.Pointer(msg)), cgoAllocsUnknown
+	C.slurm_free_submit_response_response_msg(cmsg)
 }
 
 // Strerror function as declared in slurm/slurm_errno.h:290

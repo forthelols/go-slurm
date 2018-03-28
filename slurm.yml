@@ -14,6 +14,7 @@ TRANSLATOR:
   Rules:
     function:
       - {action: accept, from: "^slurm_submit_batch_job$"}
+      - {action: accept, from: "^slurm_free_submit_response_response_msg$"}
       # Error handling in slurm_errno.h
       - {action: accept, from: "^slurm_strerror$"}
       - {action: accept, from: "^slurm_get_errno$"}
@@ -42,6 +43,7 @@ TRANSLATOR:
   PtrTips:
     function:
       - {target: "^slurm_submit_batch_job$", tips: [ref,sref]}
+      - {target: "^slurm_free_submit_response_response_msg$", tips: [ref]}
   MemTips:
       - {target: "^submit_response_msg_t$", self: raw}
 

@@ -1,4 +1,4 @@
-// WARNING: This file has automatically been generated on Wed, 28 Mar 2018 14:52:57 CEST.
+// WARNING: This file has automatically been generated on Wed, 28 Mar 2018 14:55:54 CEST.
 // By https://git.io/c-for-go. DO NOT EDIT.
 
 package slurm
