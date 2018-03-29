@@ -1,4 +1,4 @@
-// WARNING: This file has automatically been generated on Wed, 28 Mar 2018 14:55:54 CEST.
+// WARNING: This file has automatically been generated on Fri, 30 Mar 2018 00:26:17 CEST.
 // By https://git.io/c-for-go. DO NOT EDIT.
 
 /*

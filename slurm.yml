@@ -2,6 +2,8 @@ GENERATOR:
   PackageName: slurm
   PackageDescription: "Package slurm provides Go bindings for Slurm resource manager"
   PkgConfigOpts: [slurm]
+  Includes:
+    - slurm_helpers.h
   SysIncludes:
     - slurm/slurm.h
 
@@ -9,16 +11,19 @@ PARSER:
   SourcesPaths:
     - slurm/slurm.h
     - slurm/slurm_errno.h
+    - slurm/slurm_helpers.h
 
 TRANSLATOR:
   Rules:
     function:
-      - {action: accept, from: "^slurm_submit_batch_job$"}
       - {action: accept, from: "^slurm_free_submit_response_response_msg$"}
+      # API helpers
+      - {action: accept, from: "^wrap_slurm_submit_batch_job$"}
       # Error handling in slurm_errno.h
       - {action: accept, from: "^slurm_strerror$"}
       - {action: accept, from: "^slurm_get_errno$"}
       # Beautify
+      - {action: replace, from: "^wrap_"}
       - {action: replace, from: "^slurm_"}
       - {load: snakecase}
     type:
@@ -42,9 +47,5 @@ TRANSLATOR:
       - {transform: export}
   PtrTips:
     function:
-      - {target: "^slurm_submit_batch_job$", tips: [ref,sref]}
+      - {target: "^wrap_slurm_submit_batch_job$", tips: [ref]}
       - {target: "^slurm_free_submit_response_response_msg$", tips: [ref]}
-  MemTips:
-      - {target: "^submit_response_msg_t$", self: raw}
-
-

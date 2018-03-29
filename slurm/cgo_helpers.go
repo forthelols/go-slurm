@@ -1,4 +1,4 @@
-// WARNING: This file has automatically been generated on Wed, 28 Mar 2018 14:55:54 CEST.
+// WARNING: This file has automatically been generated on Fri, 30 Mar 2018 00:26:17 CEST.
 // By https://git.io/c-for-go. DO NOT EDIT.
 
 package slurm
@@ -6,6 +6,7 @@ package slurm
 /*
 #cgo pkg-config: slurm
 #include <slurm/slurm.h>
+#include "slurm_helpers.h"
 #include <stdlib.h>
 #include "cgo_helpers.h"
 */
@@ -946,32 +947,6 @@ func (x *JobDescMsg) Deref() {
 	x.X11TargetPort = (uint16)(x.ref1da77736.x11_target_port)
 }
 
-// Ref returns a reference to C object as it is.
-func (x *SubmitResponseMsg) Ref() *C.submit_response_msg_t {
-	if x == nil {
-		return nil
-	}
-	return (*C.submit_response_msg_t)(unsafe.Pointer(x))
-}
-
-// Free cleanups the referenced memory using C free.
-func (x *SubmitResponseMsg) Free() {
-	if x != nil {
-		C.free(unsafe.Pointer(x))
-	}
-}
-
-// NewSubmitResponseMsgRef converts the C object reference into a raw struct reference without wrapping.
-func NewSubmitResponseMsgRef(ref unsafe.Pointer) *SubmitResponseMsg {
-	return (*SubmitResponseMsg)(ref)
-}
-
-// NewSubmitResponseMsg allocates a new C object of this type and converts the reference into
-// a raw struct reference without wrapping.
-func NewSubmitResponseMsg() *SubmitResponseMsg {
-	return (*SubmitResponseMsg)(allocSubmitResponseMsgMemory(1))
-}
-
 // allocSubmitResponseMsgMemory allocates memory for type C.submit_response_msg_t in C.
 // The caller is responsible for freeing the this memory via C.free.
 func allocSubmitResponseMsgMemory(n int) unsafe.Pointer {
@@ -984,10 +959,90 @@ func allocSubmitResponseMsgMemory(n int) unsafe.Pointer {
 
 const sizeOfSubmitResponseMsgValue = unsafe.Sizeof([1]C.submit_response_msg_t{})
 
-// PassRef returns a reference to C object as it is or allocates a new C object of this type.
-func (x *SubmitResponseMsg) PassRef() *C.submit_response_msg_t {
+// Ref returns the underlying reference to C object or nil if struct is nil.
+func (x *SubmitResponseMsg) Ref() *C.submit_response_msg_t {
 	if x == nil {
-		x = (*SubmitResponseMsg)(allocSubmitResponseMsgMemory(1))
+		return nil
 	}
-	return (*C.submit_response_msg_t)(unsafe.Pointer(x))
+	return x.ref6c6e601
+}
+
+// Free invokes alloc map's free mechanism that cleanups any allocated memory using C free.
+// Does nothing if struct is nil or has no allocation map.
+func (x *SubmitResponseMsg) Free() {
+	if x != nil && x.allocs6c6e601 != nil {
+		x.allocs6c6e601.(*cgoAllocMap).Free()
+		x.ref6c6e601 = nil
+	}
+}
+
+// NewSubmitResponseMsgRef creates a new wrapper struct with underlying reference set to the original C object.
+// Returns nil if the provided pointer to C object is nil too.
+func NewSubmitResponseMsgRef(ref unsafe.Pointer) *SubmitResponseMsg {
+	if ref == nil {
+		return nil
+	}
+	obj := new(SubmitResponseMsg)
+	obj.ref6c6e601 = (*C.submit_response_msg_t)(unsafe.Pointer(ref))
+	return obj
+}
+
+// PassRef returns the underlying C object, otherwise it will allocate one and set its values
+// from this wrapping struct, counting allocations into an allocation map.
+func (x *SubmitResponseMsg) PassRef() (*C.submit_response_msg_t, *cgoAllocMap) {
+	if x == nil {
+		return nil, nil
+	} else if x.ref6c6e601 != nil {
+		return x.ref6c6e601, nil
+	}
+	mem6c6e601 := allocSubmitResponseMsgMemory(1)
+	ref6c6e601 := (*C.submit_response_msg_t)(mem6c6e601)
+	allocs6c6e601 := new(cgoAllocMap)
+	allocs6c6e601.Add(mem6c6e601)
+
+	var cjob_id_allocs *cgoAllocMap
+	ref6c6e601.job_id, cjob_id_allocs = (C.uint32_t)(x.JobId), cgoAllocsUnknown
+	allocs6c6e601.Borrow(cjob_id_allocs)
+
+	var cstep_id_allocs *cgoAllocMap
+	ref6c6e601.step_id, cstep_id_allocs = (C.uint32_t)(x.StepId), cgoAllocsUnknown
+	allocs6c6e601.Borrow(cstep_id_allocs)
+
+	var cerror_code_allocs *cgoAllocMap
+	ref6c6e601.error_code, cerror_code_allocs = (C.uint32_t)(x.ErrorCode), cgoAllocsUnknown
+	allocs6c6e601.Borrow(cerror_code_allocs)
+
+	var cjob_submit_user_msg_allocs *cgoAllocMap
+	ref6c6e601.job_submit_user_msg, cjob_submit_user_msg_allocs = (*C.char)(unsafe.Pointer((*sliceHeader)(unsafe.Pointer(&x.JobSubmitUserMsg)).Data)), cgoAllocsUnknown
+	allocs6c6e601.Borrow(cjob_submit_user_msg_allocs)
+
+	x.ref6c6e601 = ref6c6e601
+	x.allocs6c6e601 = allocs6c6e601
+	return ref6c6e601, allocs6c6e601
+
+}
+
+// PassValue does the same as PassRef except that it will try to dereference the returned pointer.
+func (x SubmitResponseMsg) PassValue() (C.submit_response_msg_t, *cgoAllocMap) {
+	if x.ref6c6e601 != nil {
+		return *x.ref6c6e601, nil
+	}
+	ref, allocs := x.PassRef()
+	return *ref, allocs
+}
+
+// Deref uses the underlying reference to C object and fills the wrapping struct with values.
+// Do not forget to call this method whether you get a struct for C object and want to read its values.
+func (x *SubmitResponseMsg) Deref() {
+	if x.ref6c6e601 == nil {
+		return
+	}
+	x.JobId = (uint32)(x.ref6c6e601.job_id)
+	x.StepId = (uint32)(x.ref6c6e601.step_id)
+	x.ErrorCode = (uint32)(x.ref6c6e601.error_code)
+	hxf8eae10 := (*sliceHeader)(unsafe.Pointer(&x.JobSubmitUserMsg))
+	hxf8eae10.Data = uintptr(unsafe.Pointer(x.ref6c6e601.job_submit_user_msg))
+	hxf8eae10.Cap = 0x7fffffff
+	// hxf8eae10.Len = ?
+
 }
