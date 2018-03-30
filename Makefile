@@ -1,5 +1,5 @@
 all:
-	c-for-go -ccincl slurm.yml
+	c-for-go -nostamp -ccincl slurm.yml
 
 clean:
 	rm -f slurm/doc.go \
