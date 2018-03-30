@@ -1,4 +1,4 @@
-// WARNING: This file has automatically been generated on Fri, 30 Mar 2018 11:18:58 CEST.
+// WARNING: This file has automatically been generated on Fri, 30 Mar 2018 11:30:42 CEST.
 // By https://git.io/c-for-go. DO NOT EDIT.
 
 package slurm
@@ -41,6 +41,64 @@ const (
 	SLURM_SSL_SIGNATURE_LENGTH = 128
 	// SLURM_POWER_FLAGS_LEVEL as defined in slurm/slurm.h:1378
 	SLURM_POWER_FLAGS_LEVEL = 1
+	// TRIGGER_FLAG_PERM as defined in slurm/slurm.h:3096
+	TRIGGER_FLAG_PERM = 1
+	// TRIGGER_RES_TYPE_JOB as defined in slurm/slurm.h:3098
+	TRIGGER_RES_TYPE_JOB = 1
+	// TRIGGER_RES_TYPE_NODE as defined in slurm/slurm.h:3099
+	TRIGGER_RES_TYPE_NODE = 2
+	// TRIGGER_RES_TYPE_SLURMCTLD as defined in slurm/slurm.h:3100
+	TRIGGER_RES_TYPE_SLURMCTLD = 3
+	// TRIGGER_RES_TYPE_SLURMDBD as defined in slurm/slurm.h:3101
+	TRIGGER_RES_TYPE_SLURMDBD = 4
+	// TRIGGER_RES_TYPE_DATABASE as defined in slurm/slurm.h:3102
+	TRIGGER_RES_TYPE_DATABASE = 5
+	// TRIGGER_RES_TYPE_FRONT_END as defined in slurm/slurm.h:3103
+	TRIGGER_RES_TYPE_FRONT_END = 6
+	// TRIGGER_RES_TYPE_OTHER as defined in slurm/slurm.h:3104
+	TRIGGER_RES_TYPE_OTHER = 7
+	// TRIGGER_TYPE_UP as defined in slurm/slurm.h:3106
+	TRIGGER_TYPE_UP = 1
+	// TRIGGER_TYPE_DOWN as defined in slurm/slurm.h:3107
+	TRIGGER_TYPE_DOWN = 2
+	// TRIGGER_TYPE_FAIL as defined in slurm/slurm.h:3108
+	TRIGGER_TYPE_FAIL = 4
+	// TRIGGER_TYPE_TIME as defined in slurm/slurm.h:3109
+	TRIGGER_TYPE_TIME = 8
+	// TRIGGER_TYPE_FINI as defined in slurm/slurm.h:3110
+	TRIGGER_TYPE_FINI = 16
+	// TRIGGER_TYPE_RECONFIG as defined in slurm/slurm.h:3111
+	TRIGGER_TYPE_RECONFIG = 32
+	// TRIGGER_TYPE_BLOCK_ERR as defined in slurm/slurm.h:3112
+	TRIGGER_TYPE_BLOCK_ERR = 64
+	// TRIGGER_TYPE_IDLE as defined in slurm/slurm.h:3113
+	TRIGGER_TYPE_IDLE = 128
+	// TRIGGER_TYPE_DRAINED as defined in slurm/slurm.h:3114
+	TRIGGER_TYPE_DRAINED = 256
+	// TRIGGER_TYPE_PRI_CTLD_FAIL as defined in slurm/slurm.h:3115
+	TRIGGER_TYPE_PRI_CTLD_FAIL = 512
+	// TRIGGER_TYPE_PRI_CTLD_RES_OP as defined in slurm/slurm.h:3116
+	TRIGGER_TYPE_PRI_CTLD_RES_OP = 1024
+	// TRIGGER_TYPE_PRI_CTLD_RES_CTRL as defined in slurm/slurm.h:3117
+	TRIGGER_TYPE_PRI_CTLD_RES_CTRL = 2048
+	// TRIGGER_TYPE_PRI_CTLD_ACCT_FULL as defined in slurm/slurm.h:3118
+	TRIGGER_TYPE_PRI_CTLD_ACCT_FULL = 4096
+	// TRIGGER_TYPE_BU_CTLD_FAIL as defined in slurm/slurm.h:3119
+	TRIGGER_TYPE_BU_CTLD_FAIL = 8192
+	// TRIGGER_TYPE_BU_CTLD_RES_OP as defined in slurm/slurm.h:3120
+	TRIGGER_TYPE_BU_CTLD_RES_OP = 16384
+	// TRIGGER_TYPE_BU_CTLD_AS_CTRL as defined in slurm/slurm.h:3121
+	TRIGGER_TYPE_BU_CTLD_AS_CTRL = 32768
+	// TRIGGER_TYPE_PRI_DBD_FAIL as defined in slurm/slurm.h:3122
+	TRIGGER_TYPE_PRI_DBD_FAIL = 65536
+	// TRIGGER_TYPE_PRI_DBD_RES_OP as defined in slurm/slurm.h:3123
+	TRIGGER_TYPE_PRI_DBD_RES_OP = 131072
+	// TRIGGER_TYPE_PRI_DB_FAIL as defined in slurm/slurm.h:3124
+	TRIGGER_TYPE_PRI_DB_FAIL = 262144
+	// TRIGGER_TYPE_PRI_DB_RES_OP as defined in slurm/slurm.h:3125
+	TRIGGER_TYPE_PRI_DB_RES_OP = 524288
+	// TRIGGER_TYPE_BURST_BUFFER as defined in slurm/slurm.h:3126
+	TRIGGER_TYPE_BURST_BUFFER = 1048576
 	// SLURM_SUCCESS as defined in slurm/slurm_errno.h:56
 	SLURM_SUCCESS = 0
 	// SLURM_ERROR as defined in slurm/slurm_errno.h:57

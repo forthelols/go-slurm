@@ -17,6 +17,8 @@ TRANSLATOR:
   Rules:
     function:
       - {action: accept, from: "^slurm_free_submit_response_response_msg$"}
+      - {action: accept, from: "^slurm_set_trigger$"}
+      - {action: accept, from: "^slurm_clear_trigger$"}
       # API helpers in slurm_helpers.h
       - {action: accept, from: "^wrap_slurm_submit_batch_job$"}
       # Error handling in slurm_errno.h
@@ -29,11 +31,13 @@ TRANSLATOR:
     type:
       - {action: accept, from: "^job_desc_msg_t$"}
       - {action: accept, from: "^submit_response_msg_t$"}
+      - {action: accept, from: "^trigger_info_t$"}
       # Beautify
       - {action: replace, from: "_t$"}
       - {load: snakecase}
     const:
       - {action: accept, from: "^SLURM_"}
+      - {action: accept, from: "^TRIGGER_"}   # trigger spec flags 
       # Error handling in slurm_errno.h
       - {action: accept, from: "^ESLURM_"}    # slurmctld error codes
       - {action: accept, from: "^ESLURMD_"}   # slurmd error codes
@@ -48,6 +52,4 @@ TRANSLATOR:
       - {transform: export}
   PtrTips:
     function:
-      - {target: "^slurm_free_submit_response_response_msg$", tips: [ref]}
-      # API helpers in slurm_helpers.h
-      - {target: "^wrap_slurm_submit_batch_job$", tips: [ref]}
+        - {target: ".", tips: [ref,ref,ref,ref,ref]}

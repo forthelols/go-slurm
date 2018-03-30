@@ -1,4 +1,4 @@
-// WARNING: This file has automatically been generated on Fri, 30 Mar 2018 11:18:58 CEST.
+// WARNING: This file has automatically been generated on Fri, 30 Mar 2018 11:30:42 CEST.
 // By https://git.io/c-for-go. DO NOT EDIT.
 
 package slurm
@@ -1044,5 +1044,129 @@ func (x *SubmitResponseMsg) Deref() {
 	hxf8eae10.Data = uintptr(unsafe.Pointer(x.ref6c6e601.job_submit_user_msg))
 	hxf8eae10.Cap = 0x7fffffff
 	// hxf8eae10.Len = ?
+
+}
+
+// allocTriggerInfoMemory allocates memory for type C.trigger_info_t in C.
+// The caller is responsible for freeing the this memory via C.free.
+func allocTriggerInfoMemory(n int) unsafe.Pointer {
+	mem, err := C.calloc(C.size_t(n), (C.size_t)(sizeOfTriggerInfoValue))
+	if err != nil {
+		panic("memory alloc error: " + err.Error())
+	}
+	return mem
+}
+
+const sizeOfTriggerInfoValue = unsafe.Sizeof([1]C.trigger_info_t{})
+
+// Ref returns the underlying reference to C object or nil if struct is nil.
+func (x *TriggerInfo) Ref() *C.trigger_info_t {
+	if x == nil {
+		return nil
+	}
+	return x.ref1497cae7
+}
+
+// Free invokes alloc map's free mechanism that cleanups any allocated memory using C free.
+// Does nothing if struct is nil or has no allocation map.
+func (x *TriggerInfo) Free() {
+	if x != nil && x.allocs1497cae7 != nil {
+		x.allocs1497cae7.(*cgoAllocMap).Free()
+		x.ref1497cae7 = nil
+	}
+}
+
+// NewTriggerInfoRef creates a new wrapper struct with underlying reference set to the original C object.
+// Returns nil if the provided pointer to C object is nil too.
+func NewTriggerInfoRef(ref unsafe.Pointer) *TriggerInfo {
+	if ref == nil {
+		return nil
+	}
+	obj := new(TriggerInfo)
+	obj.ref1497cae7 = (*C.trigger_info_t)(unsafe.Pointer(ref))
+	return obj
+}
+
+// PassRef returns the underlying C object, otherwise it will allocate one and set its values
+// from this wrapping struct, counting allocations into an allocation map.
+func (x *TriggerInfo) PassRef() (*C.trigger_info_t, *cgoAllocMap) {
+	if x == nil {
+		return nil, nil
+	} else if x.ref1497cae7 != nil {
+		return x.ref1497cae7, nil
+	}
+	mem1497cae7 := allocTriggerInfoMemory(1)
+	ref1497cae7 := (*C.trigger_info_t)(mem1497cae7)
+	allocs1497cae7 := new(cgoAllocMap)
+	allocs1497cae7.Add(mem1497cae7)
+
+	var cflags_allocs *cgoAllocMap
+	ref1497cae7.flags, cflags_allocs = (C.uint16_t)(x.Flags), cgoAllocsUnknown
+	allocs1497cae7.Borrow(cflags_allocs)
+
+	var ctrig_id_allocs *cgoAllocMap
+	ref1497cae7.trig_id, ctrig_id_allocs = (C.uint32_t)(x.TrigId), cgoAllocsUnknown
+	allocs1497cae7.Borrow(ctrig_id_allocs)
+
+	var cres_type_allocs *cgoAllocMap
+	ref1497cae7.res_type, cres_type_allocs = (C.uint16_t)(x.ResType), cgoAllocsUnknown
+	allocs1497cae7.Borrow(cres_type_allocs)
+
+	var cres_id_allocs *cgoAllocMap
+	ref1497cae7.res_id, cres_id_allocs = (*C.char)(unsafe.Pointer((*sliceHeader)(unsafe.Pointer(&x.ResId)).Data)), cgoAllocsUnknown
+	allocs1497cae7.Borrow(cres_id_allocs)
+
+	var ctrig_type_allocs *cgoAllocMap
+	ref1497cae7.trig_type, ctrig_type_allocs = (C.uint32_t)(x.TrigType), cgoAllocsUnknown
+	allocs1497cae7.Borrow(ctrig_type_allocs)
+
+	var coffset_allocs *cgoAllocMap
+	ref1497cae7.offset, coffset_allocs = (C.uint16_t)(x.Offset), cgoAllocsUnknown
+	allocs1497cae7.Borrow(coffset_allocs)
+
+	var cuser_id_allocs *cgoAllocMap
+	ref1497cae7.user_id, cuser_id_allocs = (C.uint32_t)(x.UserId), cgoAllocsUnknown
+	allocs1497cae7.Borrow(cuser_id_allocs)
+
+	var cprogram_allocs *cgoAllocMap
+	ref1497cae7.program, cprogram_allocs = (*C.char)(unsafe.Pointer((*sliceHeader)(unsafe.Pointer(&x.Program)).Data)), cgoAllocsUnknown
+	allocs1497cae7.Borrow(cprogram_allocs)
+
+	x.ref1497cae7 = ref1497cae7
+	x.allocs1497cae7 = allocs1497cae7
+	return ref1497cae7, allocs1497cae7
+
+}
+
+// PassValue does the same as PassRef except that it will try to dereference the returned pointer.
+func (x TriggerInfo) PassValue() (C.trigger_info_t, *cgoAllocMap) {
+	if x.ref1497cae7 != nil {
+		return *x.ref1497cae7, nil
+	}
+	ref, allocs := x.PassRef()
+	return *ref, allocs
+}
+
+// Deref uses the underlying reference to C object and fills the wrapping struct with values.
+// Do not forget to call this method whether you get a struct for C object and want to read its values.
+func (x *TriggerInfo) Deref() {
+	if x.ref1497cae7 == nil {
+		return
+	}
+	x.Flags = (uint16)(x.ref1497cae7.flags)
+	x.TrigId = (uint32)(x.ref1497cae7.trig_id)
+	x.ResType = (uint16)(x.ref1497cae7.res_type)
+	hxfeb55cf := (*sliceHeader)(unsafe.Pointer(&x.ResId))
+	hxfeb55cf.Data = uintptr(unsafe.Pointer(x.ref1497cae7.res_id))
+	hxfeb55cf.Cap = 0x7fffffff
+	// hxfeb55cf.Len = ?
+
+	x.TrigType = (uint32)(x.ref1497cae7.trig_type)
+	x.Offset = (uint16)(x.ref1497cae7.offset)
+	x.UserId = (uint32)(x.ref1497cae7.user_id)
+	hxf458096 := (*sliceHeader)(unsafe.Pointer(&x.Program))
+	hxf458096.Data = uintptr(unsafe.Pointer(x.ref1497cae7.program))
+	hxf458096.Cap = 0x7fffffff
+	// hxf458096.Len = ?
 
 }

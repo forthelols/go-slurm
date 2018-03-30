@@ -1,4 +1,4 @@
-// WARNING: This file has automatically been generated on Fri, 30 Mar 2018 11:18:58 CEST.
+// WARNING: This file has automatically been generated on Fri, 30 Mar 2018 11:30:42 CEST.
 // By https://git.io/c-for-go. DO NOT EDIT.
 
 package slurm
@@ -143,4 +143,18 @@ type SubmitResponseMsg struct {
 	JobSubmitUserMsg []byte
 	ref6c6e601       *C.submit_response_msg_t
 	allocs6c6e601    interface{}
+}
+
+// TriggerInfo as declared in slurm/slurm.h:3138
+type TriggerInfo struct {
+	Flags          uint16
+	TrigId         uint32
+	ResType        uint16
+	ResId          []byte
+	TrigType       uint32
+	Offset         uint16
+	UserId         uint32
+	Program        []byte
+	ref1497cae7    *C.trigger_info_t
+	allocs1497cae7 interface{}
 }
