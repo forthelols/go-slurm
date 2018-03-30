@@ -1,4 +1,4 @@
-// WARNING: This file has automatically been generated on Fri, 30 Mar 2018 00:26:17 CEST.
+// WARNING: This file has automatically been generated on Fri, 30 Mar 2018 11:18:58 CEST.
 // By https://git.io/c-for-go. DO NOT EDIT.
 
 package slurm
@@ -34,7 +34,7 @@ func GetErrno() int32 {
 	return __v
 }
 
-// SubmitBatchJob function as declared in slurm/slurm_helpers.h:4
+// SubmitBatchJob function as declared in slurm/slurm_helpers.h:12
 func SubmitBatchJob(jobDescMsg *JobDescMsg) *SubmitResponseMsg {
 	cjobDescMsg, _ := jobDescMsg.PassRef()
 	__ret := C.wrap_slurm_submit_batch_job(cjobDescMsg)

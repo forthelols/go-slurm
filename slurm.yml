@@ -1,6 +1,6 @@
 GENERATOR: 
   PackageName: slurm
-  PackageDescription: "Package slurm provides Go bindings for Slurm resource manager"
+  PackageDescription: "Package slurm provides Go bindings for the Slurm resource manager APIs"
   PkgConfigOpts: [slurm]
   Includes:
     - slurm_helpers.h
@@ -17,7 +17,7 @@ TRANSLATOR:
   Rules:
     function:
       - {action: accept, from: "^slurm_free_submit_response_response_msg$"}
-      # API helpers
+      # API helpers in slurm_helpers.h
       - {action: accept, from: "^wrap_slurm_submit_batch_job$"}
       # Error handling in slurm_errno.h
       - {action: accept, from: "^slurm_strerror$"}
@@ -35,9 +35,10 @@ TRANSLATOR:
     const:
       - {action: accept, from: "^SLURM_"}
       # Error handling in slurm_errno.h
-      - {action: accept, from: "^ESLURM_"}
-      - {action: accept, from: "^ESLURMD_"}
-      - {action: accept, from: "^ESCRIPT_"}
+      - {action: accept, from: "^ESLURM_"}    # slurmctld error codes
+      - {action: accept, from: "^ESLURMD_"}   # slurmd error codes
+      - {action: accept, from: "^ESCRIPT_"}   # slurmd errors in user batch job
+      - {action: accept, from: "^SLURMCTLD_"} # communication failures to/from slurmctld
       # Ignore initializer macros, usually not needed
       # by clients and troublesome for cgo generation
       - {action: ignore, from: "_INITIALIZER$"}
@@ -47,5 +48,6 @@ TRANSLATOR:
       - {transform: export}
   PtrTips:
     function:
-      - {target: "^wrap_slurm_submit_batch_job$", tips: [ref]}
       - {target: "^slurm_free_submit_response_response_msg$", tips: [ref]}
+      # API helpers in slurm_helpers.h
+      - {target: "^wrap_slurm_submit_batch_job$", tips: [ref]}

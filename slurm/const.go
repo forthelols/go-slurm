@@ -1,4 +1,4 @@
-// WARNING: This file has automatically been generated on Fri, 30 Mar 2018 00:26:17 CEST.
+// WARNING: This file has automatically been generated on Fri, 30 Mar 2018 11:18:58 CEST.
 // By https://git.io/c-for-go. DO NOT EDIT.
 
 package slurm
@@ -197,6 +197,14 @@ const (
 	SLURM_PLUGIN_NAME_INVALID = 1011
 	// SLURM_UNKNOWN_FORWARD_ADDR as declared in slurm/slurm_errno.h:79
 	SLURM_UNKNOWN_FORWARD_ADDR = 1012
+	// SLURMCTLD_COMMUNICATIONS_CONNECTION_ERROR as declared in slurm/slurm_errno.h:82
+	SLURMCTLD_COMMUNICATIONS_CONNECTION_ERROR = 1800
+	// SLURMCTLD_COMMUNICATIONS_SEND_ERROR as declared in slurm/slurm_errno.h:83
+	SLURMCTLD_COMMUNICATIONS_SEND_ERROR = 1801
+	// SLURMCTLD_COMMUNICATIONS_RECEIVE_ERROR as declared in slurm/slurm_errno.h:84
+	SLURMCTLD_COMMUNICATIONS_RECEIVE_ERROR = 1802
+	// SLURMCTLD_COMMUNICATIONS_SHUTDOWN_ERROR as declared in slurm/slurm_errno.h:85
+	SLURMCTLD_COMMUNICATIONS_SHUTDOWN_ERROR = 1803
 	// SLURM_NO_CHANGE_IN_DATA as declared in slurm/slurm_errno.h:88
 	SLURM_NO_CHANGE_IN_DATA = 1900
 	// ESLURM_INVALID_PARTITION_NAME as declared in slurm/slurm_errno.h:91
